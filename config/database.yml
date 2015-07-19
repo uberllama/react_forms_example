@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: react_forms_example_development
+  host: localhost
+
+test:
+  <<: *default
+  database: react_forms_example_test
+  host: localhost

@@ -1,0 +1,6 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.btn + .btn {
+  margin-left: 5px;
+}

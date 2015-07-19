@@ -1,0 +1,9 @@
+//= require jquery
+//= require lodash
+//= require react
+//= require react-router
+//= require classnames
+//= require router/variables
+//= require_tree ./stores
+//= require_tree ./components
+//= require router/routes
