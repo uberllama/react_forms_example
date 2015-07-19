@@ -2,19 +2,19 @@ var BaseStore = {
 
   API_PATH_PREFIX: '/api/v1',
 
-  getResources() {
+  getResources: function() {
     return this._ajax(
       this.resourceName
     );
   },
 
-  getResource(id) {
+  getResource: function(id) {
     return this._ajax(
       this.resourceName + '/' + id
     );
   },
 
-  createResource(resource) {
+  createResource: function(resource) {
     return this._ajax(
       this.resourceName + '/',
       'POST',
@@ -22,7 +22,7 @@ var BaseStore = {
     );
   },
 
-  updateResource(resource) {
+  updateResource: function(resource) {
     return this._ajax(
       this.resourceName + '/' + resource.id,
       'PUT',
@@ -30,14 +30,14 @@ var BaseStore = {
     );
   },
 
-  destroyResource(resource) {
+  destroyResource: function(resource) {
     return this._ajax(
       this.resourceName + '/' + resource.id,
       'DELETE'
     );
   },
 
-  _ajax(url, verb, data) {
+  _ajax: function(url, verb, data) {
     return $.ajax({
       url:          this.API_PATH_PREFIX + '/' + url,
       type:         verb || 'GET',
