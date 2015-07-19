@@ -1,4 +1,8 @@
-Companion code to my blog post on doing CRUD with React and Rails.
+Companion code to my blog post.
+
+## Blog Post
+
+http://blog.littleblimp.com/post/124492420923/restful-forms-with-react-part-1
 
 ## Live Demo
 
