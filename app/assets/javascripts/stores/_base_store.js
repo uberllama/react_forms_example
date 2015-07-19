@@ -14,25 +14,25 @@ var BaseStore = {
     );
   },
 
-  createResource(model) {
+  createResource(resource) {
     return this._ajax(
       this.resourceName + '/',
       'POST',
-      JSON.stringify(model)
+      JSON.stringify(resource)
     );
   },
 
-  updateResource(model) {
+  updateResource(resource) {
     return this._ajax(
-      this.resourceName + '/' + model.id,
+      this.resourceName + '/' + resource.id,
       'PUT',
-      JSON.stringify(model)
+      JSON.stringify(resource)
     );
   },
 
-  destroyResource(model) {
+  destroyResource(resource) {
     return this._ajax(
-      this.resourceName + '/' + model.id,
+      this.resourceName + '/' + resource.id,
       'DELETE'
     );
   },

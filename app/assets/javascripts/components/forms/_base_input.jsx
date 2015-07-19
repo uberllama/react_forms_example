@@ -5,7 +5,7 @@ class BaseInput extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // Update parent form's model state
+  // Update parent form's resource state
   handleChange(e) {
     this.props.onInputChange(this.props.name, e.target.value);
   }

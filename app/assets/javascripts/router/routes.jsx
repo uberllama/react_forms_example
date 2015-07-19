@@ -1,7 +1,7 @@
 let routes = (
   <Route handler={App}>
     <Route name='newPost' path='/posts/new' handler={NewPostPage} />
-    <Route name='editPost' path='/posts/:id/edit' handler={EditPostPage} />
+    <Route name='editPost' path='/posts/:postId/edit' handler={EditPostPage} />
     <DefaultRoute name='posts' handler={PostsPage} />
   </Route>
 );

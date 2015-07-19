@@ -12,7 +12,9 @@ class NewPostPage extends React.Component {
   render() {
     return (
       <div>
-        <PostForm model={{}} onSuccess={this.handleSuccess} />
+        <PostForm
+          resource={{}}
+          onSuccess={this.handleSuccess} />
       </div>
     )
   }

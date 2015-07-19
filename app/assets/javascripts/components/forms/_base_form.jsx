@@ -4,9 +4,9 @@ class BaseForm extends React.Component {
     super(props);
 
     this.state = {
-      errors: {},
-      loaded: false,
-      model:  this.props.model
+      loaded:   false,
+      resource: this.props.resource,
+      errors:   {}
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -14,22 +14,32 @@ class BaseForm extends React.Component {
     this.handleDestroy     = this.handleDestroy.bind(this);
   }
 
-  // Update model state when an input is changed
+  // Helper to generate props for input components based on their key (attribute name)
+  getInputProps(attr) {
+    return {
+      name:          attr,
+      value:         this.state.resource[attr],
+      errors:        this.state.errors[attr],
+      onInputChange: this.handleInputChange
+    };
+  }
+
+  // Update resource state when an input is changed
   handleInputChange(name, value) {
     this.setState(function(previousState) {
-      let model = previousState.model;
-      model[name] = value;
-      return { model: model };
+      let resource = previousState.resource;
+      resource[name] = value;
+      return { resource: resource };
     });
   }
 
   // Create/update resource on form submit and handle success/failure
   handleSubmit(e) {
     e.preventDefault();
-    if (_.isEmpty(this.state.model)) { return; } // don't submit empty forms
+    if (_.isEmpty(this.state.resource)) { return; } // don't submit empty forms
 
-    let action = this.state.model.id ? 'updateResource' : 'createResource';
-    let deferred = this.store[action](this.state.model);
+    let action = this.state.resource.id ? 'updateResource' : 'createResource';
+    let deferred = this.store[action](this.state.resource);
 
     deferred
     .done(data => {
@@ -47,25 +57,15 @@ class BaseForm extends React.Component {
     e.preventDefault();
     if (!confirm('Delete this record?')) { return; }
 
-    this.store.destroyResource(this.state.model).then(() => {
+    this.store.destroyResource(this.state.resource).then(() => {
       this.props.onDestroy();
     });
-  }
-
-  // Helper to generate props for input components based on their key (attribute name)
-  getInputProps(name) {
-    return {
-      errors:        this.state.errors[name],
-      name:          name,
-      onInputChange: this.handleInputChange,
-      value:         this.state.model[name]
-    };
   }
 
 }
 
 BaseForm.propTypes = {
-  model:     React.PropTypes.object.isRequired,
+  resource:  React.PropTypes.object.isRequired,
   onDestroy: React.PropTypes.func,
   onSuccess: React.PropTypes.func.isRequired
 }

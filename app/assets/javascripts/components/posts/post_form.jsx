@@ -18,8 +18,8 @@ class PostForm extends BaseForm {
     if (!this.state.loaded) { return <div>Loading...</div>; }
 
     let destroyButton;
-    if (this.props.model.id) {
-      destroyButton = <button className="btn btn-danger" onClick={this.handleDestroy}>Delete</button>;
+    if (this.props.resource.id) {
+      destroyButton = <button className="btn btn-danger pull-right" onClick={this.handleDestroy}>Delete</button>;
     }
 
     return (
@@ -28,8 +28,8 @@ class PostForm extends BaseForm {
         <TextInput {...this.getInputProps('title')} autoFocus={true} />
         <TextareaInput {...this.getInputProps('body')} />
         <Link to='posts' className="btn btn-default">Cancel</Link>
+        <button type="submit" className="btn btn-primary pull-right">Save</button>
         {destroyButton}
-        <button type="submit" className="btn btn-primary">Save</button>
       </form>
     )
   }

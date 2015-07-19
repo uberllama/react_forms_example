@@ -8,7 +8,7 @@ class Post extends React.Component {
         <p>
           {this.props.post.body}
         </p>
-        <Link to='editPost' params={{id: this.props.post.id}} className="btn btn-xs btn-default">Edit</Link>
+        <Link to='editPost' params={{postId: this.props.post.id}} className="btn btn-xs btn-default">Edit</Link>
       </li>
     )
   }

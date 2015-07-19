@@ -7,7 +7,7 @@ class EditPostPage extends React.Component {
   }
 
   componentDidMount() {
-    PostStore.getResource(this.props.params.id).then(data => {
+    PostStore.getResource(this.props.params.postId).then(data => {
       this.setState({
         loaded: true,
         post:   data.post
@@ -25,7 +25,7 @@ class EditPostPage extends React.Component {
     return (
       <div>
         <PostForm
-          model={this.state.post}
+          resource={this.state.post}
           onSuccess={this.handleSuccess}
           onDestroy={this.handleSuccess} />
       </div>
