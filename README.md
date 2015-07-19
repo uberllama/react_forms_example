@@ -1,6 +1,10 @@
 Companion code to my blog post on doing CRUD with React and Rails.
 
-Do it:
+## Live Demo
+
+http://littleblimp-reactforms.herokuapp.com
+
+## Install
 
 1. Clone
 2. `bundle`
